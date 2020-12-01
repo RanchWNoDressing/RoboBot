@@ -3,13 +3,13 @@ const Discord = require('discord.js');
 
 module.exports = class PurgeCommand extends BaseCommand {
   constructor() {
-    super('purge', 'Moderation', []);
+    super('purge', 'moderation', []);
   }
 
   async run(client, message, args) {
     if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send('You cannot use this command.');
     if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) return message.channel.send("I do not have \'MANAGE_MESSAGES\' permission.");
-    if (!args[0]) return message.channel.send("You must state a number of messages to purge \'-purge number\'");
+    if (!args[0]) return message.channel.send("You must state a number of messages to purge \'.purge number\'");
     const amonutToDelete = Number(args[0], 10);
 
     if (isNaN(amonutToDelete)) return message.channel.send("Number stated is not a valid number.");
